@@ -1,0 +1,25 @@
+login/logup
+http://www.17sucai.com/preview/289750/2015-11-25/简洁大方的登录页面/index.html 
+
+pages
+http://www.omooo.com/article/show-5349.html
+
+
+
+
+
+-angular to mongodb
+A la racine du projet ,créer un dossier - "server"  ;
+
+Dans server:
+npm init -y   ;
+npm i express --save   ;
+npm install -g nodemon  ;
+npm i body-parse --save ;
+npm install mongodb --save-dev ;
+
+https://www.w3schools.com/nodejs/nodejs_mongodb_find.asp
+mongo
+show dbs 
+use smallforum //créer la bdd
+db.user.insert({"name":"admin","email":"admin@gmail.com","pwd":"aaaaa"})//créer une collection et y insérer un document
