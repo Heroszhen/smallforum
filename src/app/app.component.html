@@ -14,7 +14,7 @@
 		<div>
 			<button *ngIf="isconnected==false" [routerLink]="['/home',1]" type="button"  class="btn btn-outline-info mr-1">Se connecter</button>
 			<button *ngIf="isconnected==false" [routerLink]="['/home',2]" type="button"  class="btn btn-outline-info">S'inscrire</button>
-			<button *ngIf="isconnected==true" type="button" class="btn btn-outline-dark">Déconnexion</button>
+			<button *ngIf="isconnected==true" (click)="logout()" type="button" class="btn btn-outline-dark">Déconnexion</button>
 		</div>
 	  </div>
   </div>

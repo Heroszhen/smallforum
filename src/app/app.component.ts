@@ -11,12 +11,19 @@ export class AppComponent implements OnInit{
   isconnected:boolean;
   
   constructor(private ms : MyservicesService){
-	this.isconnected = false;
+	this.ms.checkConnection();
+	this.isconnected = this.ms.isconnected$.getValue()[0];
   }
   
   ngOnInit(){
-	
+	this.ms.isconnected$.subscribe((data)=>{
+		this.isconnected = data[0];
+	});
   }
   
+  logout(){
+	this.ms.deleteCookie("user");
+	this.ms.isconnected$.next([false]);
+  }
 
 }

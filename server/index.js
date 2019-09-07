@@ -56,7 +56,9 @@ app.post('/login',function(req,res){
 				if(result == null){
 					res.send({"response":"no"});
 				}else{
-					res.send({"response":"done"});
+					delete result.pwd;
+					console.log(result);
+					res.send({"response":"done","data":result});
 				}
 			});
 		}
