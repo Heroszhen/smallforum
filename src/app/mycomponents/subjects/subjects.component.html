@@ -1,0 +1,67 @@
+<div id="subjects" class="pt-3 pb-3">
+	<div class="container pt-3 pb-3">
+		<div class="row border rounded p-2 bg-white r1 mb-3">
+			<div class="col-12 help rounded p-1 mb-2">
+				<div class="text-white">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+				</div>
+				<div>
+					<button type="button" (click)="displayhelps()" class="btn btn-primary btn-sm" #mybtn1>-</button>
+				</div>
+			</div>
+			<div *ngIf="showhelps==true" class="col-12 helps">
+				<div class="onehelp border-top">
+					<div class="pr-3">
+						<h5>Lorem Ipsum</h5>
+						<p>
+							 Ut et aliquam orci, id ullamcorper leo. Morbi non tellus et risus volutpat imperdiet vel consequat nunc. Pellentesque nisl nunc, porta id varius ornare, porta eu eros. 
+						</p>
+					</div>
+					<div>
+						Posté par zhen<br>
+						08/09/2019
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row border rounded p-2 bg-white r2 mb-3">
+			<div class="col-12 subjecthelp rounded p-1 mb-2">
+				<div class="text-white">
+					Les sujets Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+				</div>
+				<div>
+					<button type="button" (click)="displaysubjecthelps()" class="btn btn-primary btn-sm" #mybtn2>-</button>
+				</div>
+			</div>
+			<div *ngIf="showsubjects==true" class="col-12 helps">
+				<div *ngFor="let item of allsubjects" class="onesubject border-top">
+					<div class="pr-3">
+						<h5>{{item.titile}}</h5>
+						<p>
+							{{item.content.substr(1,100)}}...
+						</p>
+					</div>
+					<div>
+						Posté par {{item.name}}<br>
+						{{item.created}}
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div *ngIf="isconnected==true" class="row border rounded p-2 bg-white r2 mb-3">
+			<div class="col-12">
+				<form (ngSubmit)="onSubmit()">
+					<div class="form-group">
+						<input type="text" class="form-control" id="titile" name="titile" [(ngModel)]="createsubject.titile" placeholder="Enter title">
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" id="content" name="content" [(ngModel)]="createsubject.content" rows="3"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary"  [disabled]="createsubject.titile == ''|| createsubject.content ==''">Créer</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

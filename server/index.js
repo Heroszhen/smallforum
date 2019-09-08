@@ -36,7 +36,7 @@ app.post('/logup',function(req,res){
 					res.send({"response":"no"});
 				}else{
 					db.collection("user").insertOne(query,function(err,result){
-						if(err)throw err;
+						if(err)console.log(err);
 						else res.send({"response":"done"});
 					});
 				}
@@ -57,13 +57,30 @@ app.post('/login',function(req,res){
 					res.send({"response":"no"});
 				}else{
 					delete result.pwd;
-					console.log(result);
+					//console.log(result);
 					res.send({"response":"done","data":result});
 				}
 			});
 		}
 	});
 	//res.send(query);
+});
+
+app.get('/getallsubjects',function(req,res){
+	mongoClient.connect(url,{ useNewUrlParser: true }, { useUnifiedTopology: true },function(err,client){
+		if(err)return;
+		else{
+			var db = client.db("smallforum");
+			var mysort = { created: -1 };//-1:décroissant,1:croissant
+			db.collection('subject').find().sort(mysort).toArray(function(err, result) {
+				if (err) throw err;
+				else{
+					if(result.length == 0)res.send({"response":"no"});
+					else res.send({"response":"done","data":result});
+				}
+			  });
+		}
+	});
 });
 
 app.listen(3333);

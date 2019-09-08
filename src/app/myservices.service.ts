@@ -15,6 +15,10 @@ export class MyservicesService {
 	return this.http.post(this.urldb+''+url,query);
   }
   
+  getQuery(url){
+	return this.http.get(this.urldb+''+url);
+  }
+  
   checkConnection(){
 	if(this.getCookie("user") != "no")this.isconnected$.next([true]);
 	else this.isconnected$.next([false]);

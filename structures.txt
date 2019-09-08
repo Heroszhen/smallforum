@@ -23,3 +23,4 @@ mongo
 show dbs 
 use smallforum //créer la bdd
 db.user.insert({"name":"admin","email":"admin@gmail.com","pwd":"aaaaa"})//créer une collection et y insérer un document
+db.user.find("_id":ObjectId({1235445555252}))

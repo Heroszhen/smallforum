@@ -4,15 +4,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-
+import { MyservicesService } from './myservices.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './mycomponents/home/home.component';
-import { MyservicesService } from './myservices.service';
+import { SubjectsComponent } from './mycomponents/subjects/subjects.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SubjectsComponent
   ],
   imports: [
     BrowserModule,

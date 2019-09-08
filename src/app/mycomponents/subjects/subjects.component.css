@@ -1,0 +1,21 @@
+#subjects{
+	background-color:rgb(214,239,252);
+	min-height: calc(100vh - 60px);
+}
+
+#subjects .help,#subjects .subjecthelp{
+	display:flex;
+	justify-content: space-between; 
+	align-items:center;
+	background: linear-gradient(rgb(0,185,255), rgb(2,156,221));
+}
+
+#subjects .onehelp, #subjects .onesubject{
+	display:flex;
+	justify-content: space-between; 
+	align-items:center;
+}
+
+#subjects .onehelp h5,#subjects .onesubject h5{
+	color:rgb(55,126,200);
+}
