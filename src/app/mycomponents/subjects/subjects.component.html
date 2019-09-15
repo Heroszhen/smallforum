@@ -37,14 +37,14 @@
 			<div *ngIf="showsubjects==true" class="col-12 helps">
 				<div *ngFor="let item of allsubjects" class="onesubject border-top">
 					<div class="pr-3">
-						<h5>{{item.titile}}</h5>
+						<h5 [routerLink]="['/onesubject',item._id]">{{item.titile}}</h5>
 						<p>
-							{{item.content.substr(1,100)}}...
+							{{item.content.substr(0,100)}}...
 						</p>
 					</div>
 					<div>
-						Posté par {{item.name}}<br>
-						{{item.created}}
+						Posté par <span [routerLink]="['/profile',item.userid]" class="routerbtn">{{item.name}}</span><br>
+						{{item.created | date: 'HH:mm:ss dd/mm/yy'}}
 					</div>
 				</div>
 			</div>

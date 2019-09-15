@@ -2,3 +2,9 @@
 *{
 	box-sizing: border-box;
 }
+
+.routerbtn:hover{
+	color:blue;
+	cursor:pointer;
+	text-decoration: blue solid underline;
+}

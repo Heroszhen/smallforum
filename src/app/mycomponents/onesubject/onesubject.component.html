@@ -1,0 +1,45 @@
+<div id="onesubject" class="pt-2">
+	<h2 *ngIf="this.thesubject != ''" class="text-center mb-4">
+		<strong>{{thesubject.titile}}</strong>
+	</h2>
+	
+	<div class="container">
+		<div class="row">
+			<div  *ngIf="this.thesubject != ''" class="col-12">
+				<div class="oneresponse">
+					<div class="text-center">
+						<h5>{{thesubject.name}}</h5>
+						<small class="text-black-50">{{thesubject.created | date: 'HH:mm:ss dd/MM/yy'}}</small>
+					</div>
+					<div>
+						{{thesubject.content}}
+					</div>
+				</div>
+			</div>
+			
+			<div *ngFor="let item of allresponses;let key = index" class="col-12">
+				<div [ngClass]="{'oneresponse2 oneresponse': key%2 === 0, 'oneresponse':key%2 !== 0}">
+					<div class="text-center">
+						<h5>{{item.name}}</h5>
+						<small class="text-black-50">{{item.created | date: 'hh:mm:ss dd/MM/yy'}}</small>
+					</div>
+					<div>
+						{{item.content}}
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div *ngIf="isconnected==true" class="row p-2 pt-5 bg-white r2 mb-3">
+			<div class="col-12">
+				<form (ngSubmit)="onSubmit()">
+					<div class="form-group">
+						<textarea class="form-control" id="content" name="content" [(ngModel)]="createresponse.content" rows="3"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary"  [disabled]="createresponse.titile == ''|| createresponse.content ==''">Créer</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

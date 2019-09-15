@@ -14,7 +14,7 @@ export class SubjectsComponent implements OnInit {
 	showsubjects = true;
 	allsubjects:any;
 	createsubject = {
-		"user":"",
+		"userid":"",
 		"name":"",
 		"titile":"",
 		"content":"",
@@ -64,13 +64,27 @@ export class SubjectsComponent implements OnInit {
 	
 	onSubmit(){
 		var user = JSON.parse(this.ms.getCookie("user"));
-		this.createsubject.user = user.email;
-		this.createsubject.name = user.name;
+		this.createsubject.userid = user._id;
+		this.createsubject.name = user.name;/*
 		var d = new Date();
+		var zero = 0;
 		var month = d.getMonth() + 1;
-		var tody = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+" "+d.getDate()+"/"+month+"/"+d.getFullYear();
-		alert(tody);
-		this.createsubject.titile = '';
-		this.createsubject.content = '';
+		if(month < 10)var month2 = ""+zero+month;
+		else var month2 = ""+month;
+		var day = d.getDate();
+		if(day < 10)var day2 = zero.toString()+""+day.toString();
+		else var day2 = ""+day;
+		var tody = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+" "+day2+"/"+month2+"/"+d.getFullYear();
+		this.createsubject.created = tody;*/
+		
+		this.ms.postQuery("createonesubject",this.createsubject).subscribe((data)=>{
+			if(data != null && Object.keys(data).length != 0){
+				if(data["response"] == "done"){
+					this.createsubject.titile = '';
+					this.createsubject.content = '';
+					this.allsubjects = data["data"];
+				}
+			}
+		});
 	}
 }
